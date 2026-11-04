@@ -1211,10 +1211,18 @@ section {
 /*--------------------------------------------------------------
 # Book A Table Section
 --------------------------------------------------------------*/
+.book-a-table .row.g-0 {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #f7f7f7;
+}
+
 .book-a-table .reservation-img {
   min-height: 500px;
   background-size: cover;
   background-position: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .book-a-table .reservation-form-bg {
@@ -1222,7 +1230,13 @@ section {
 }
 
 .book-a-table .booking-form {
+  width: 100%;
   padding: 40px;
+}
+
+.book-a-table .booking-form .row {
+  --bs-gutter-x: 20px;
+  --bs-gutter-y: 20px;
 }
 
 @media (max-width: 575px) {
@@ -1297,31 +1311,44 @@ section {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
-  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: #fff;
+  color: #202020;
+  min-height: 56px;
+  padding: 12px 15px;
+}
+
+.book-a-table .booking-form input::placeholder,
+.book-a-table .booking-form select::placeholder,
+.book-a-table .booking-form textarea::placeholder {
+  color: rgba(0, 0, 0, 0.58);
 }
 
 .book-a-table .booking-form input:focus,
 .book-a-table .booking-form select:focus,
 .book-a-table .booking-form textarea:focus {
   border-color: var(--color-primary);
-}
-
-.book-a-table .booking-form input {
-  padding: 12px 15px;
+  box-shadow: none;
 }
 
 .book-a-table .booking-form textarea {
-  padding: 12px 15px;
+  min-height: 160px;
+  resize: vertical;
 }
 
 .book-a-table .booking-form button[type=submit] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 16px;
   background: var(--color-primary);
   border: 0;
-  padding: 14px 60px;
+  padding: 18px 60px;
   color: #fff;
   transition: 0.4s;
-  border-radius: 50px;
+  border-radius: 999px;
+  min-width: min(100%, 360px);
+  font-weight: 700;
 }
 
 .book-a-table .booking-form button[type=submit]:hover {
@@ -1822,6 +1849,9 @@ section {
 .book-a-table .booking-form,
 .book-a-table .reservation-form-bg {
   min-width: 0;
+}
+
+.book-a-table .booking-form {
   width: 100%;
 }
 
