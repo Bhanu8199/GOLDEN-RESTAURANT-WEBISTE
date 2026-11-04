@@ -13,7 +13,7 @@
 /* Fonts */
 :root {
   --font-default: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-primary: "Amatic SC", sans-serif;
+  --font-primary: "Cormorant Garamond", serif;
   --font-secondary: "Inter", sans-serif;
 }
 
@@ -580,23 +580,27 @@ section {
   left: 10%;
   right: 10%;
   bottom: 10%;
-  background-color: #fff;
-  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.08);
-  padding: 20px;
+  background-color: transparent;
   text-align: center;
 }
 
-.about .call-us h4 {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 5px;
-  font-family: var(--font-default);
+.call-us-button {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 50px;
+  background-color: var(--color-primary);
+  border: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  transition: 0.3s;
 }
 
-.about .call-us p {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--color-primary);
+.call-us-button:hover,
+.call-us-button:focus-visible {
+  background: rgba(206, 18, 18, 0.8);
+  color: #fff;
 }
 
 .about .content ul {
@@ -799,11 +803,21 @@ section {
   width: 100%;
 }
 
+.stats-counter .stats-item .stats-number {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
 .stats-counter .stats-item span {
   font-size: 48px;
   display: block;
   color: #fff;
   font-weight: 700;
+}
+
+.stats-counter .stats-item .stats-suffix {
+  margin-left: 2px;
 }
 
 .stats-counter .stats-item p {
@@ -889,14 +903,37 @@ section {
   -moz-text-align-last: center;
   text-align-last: center;
 }
-.menu-img{
-  width: fit-content;
-  aspect-ratio: 2;
+.menu .tab-content .menu-item > a {
+  display: block;
+  margin: 0 20px 15px;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
 }
 
 .menu .tab-content .menu-item .menu-img {
-  padding: 0 60px;
-  margin-bottom: 15px;
+  display: block;
+  width: 100%;
+  height: 230px;
+  padding: 0;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.menu .tab-content .menu-item > a:hover .menu-img,
+.menu .tab-content .menu-item > a:focus-visible .menu-img {
+  transform: scale(1.05);
+}
+
+@media (max-width: 575px) {
+  .menu .tab-content .menu-item > a {
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+
+  .menu .tab-content .menu-item .menu-img {
+    height: 210px;
+  }
 }
 
 .menu .tab-content .menu-item h4 {
@@ -1013,7 +1050,7 @@ section {
 
 .events .event-item {
   background-size: cover;
-  background-position: cente;
+  background-position: center;
   min-height: 600px;
   padding: 30px;
 }
@@ -1184,24 +1221,24 @@ section {
   background: rgba(55, 55, 63, 0.04);
 }
 
-.book-a-table .php-email-form {
+.book-a-table .booking-form {
   padding: 40px;
 }
 
 @media (max-width: 575px) {
-  .book-a-table .php-email-form {
+  .book-a-table .booking-form {
     padding: 20px;
   }
 }
 
-.book-a-table .php-email-form h3 {
+.book-a-table .booking-form h3 {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.book-a-table .php-email-form h4 {
+.book-a-table .booking-form h4 {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -1209,12 +1246,12 @@ section {
   margin: 20px 0 0 0;
 }
 
-.book-a-table .php-email-form p {
+.book-a-table .booking-form p {
   font-size: 14px;
   margin-bottom: 20px;
 }
 
-.book-a-table .php-email-form .error-message {
+.book-a-table .booking-form .error-message {
   display: none;
   color: #fff;
   background: #df1529;
@@ -1224,7 +1261,7 @@ section {
   font-weight: 600;
 }
 
-.book-a-table .php-email-form .sent-message {
+.book-a-table .booking-form .sent-message {
   display: none;
   color: #fff;
   background: #059652;
@@ -1234,7 +1271,7 @@ section {
   font-weight: 600;
 }
 
-.book-a-table .php-email-form .loading {
+.book-a-table .booking-form .loading {
   display: none;
   background: #fff;
   text-align: center;
@@ -1242,7 +1279,7 @@ section {
   margin-bottom: 24px;
 }
 
-.book-a-table .php-email-form .loading:before {
+.book-a-table .booking-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -1254,28 +1291,31 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 
-.book-a-table .php-email-form input,
-.book-a-table .php-email-form textarea {
+.book-a-table .booking-form input,
+.book-a-table .booking-form select,
+.book-a-table .booking-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
   border-radius: 0;
 }
 
-.book-a-table .php-email-form input:focus,
-.book-a-table .php-email-form textarea:focus {
+.book-a-table .booking-form input:focus,
+.book-a-table .booking-form select:focus,
+.book-a-table .booking-form textarea:focus {
   border-color: var(--color-primary);
 }
 
-.book-a-table .php-email-form input {
+.book-a-table .booking-form input {
   padding: 12px 15px;
 }
 
-.book-a-table .php-email-form textarea {
+.book-a-table .booking-form textarea {
   padding: 12px 15px;
 }
 
-.book-a-table .php-email-form button[type=submit] {
+.book-a-table .booking-form button[type=submit] {
+  margin-top: 16px;
   background: var(--color-primary);
   border: 0;
   padding: 14px 60px;
@@ -1284,7 +1324,7 @@ section {
   border-radius: 50px;
 }
 
-.book-a-table .php-email-form button[type=submit]:hover {
+.book-a-table .booking-form button[type=submit]:hover {
   background: #ec2727;
 }
 
@@ -1369,11 +1409,88 @@ section {
   margin: 0 0 5px 0;
 }
 
+.contact .info-item .contact-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #df2020, var(--color-primary));
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(206, 18, 18, 0.2);
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.contact .info-item .contact-action:hover,
+.contact .info-item .contact-action:focus-visible {
+  background: #a90f0f;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(206, 18, 18, 0.3);
+  transform: translateY(-2px);
+}
+
+.contact .info-item .contact-action:focus-visible {
+  outline: 3px solid rgba(206, 18, 18, 0.3);
+  outline-offset: 3px;
+}
+
+.contact .info-item .contact-action i {
+  font-size: 14px;
+}
+
+.contact .info-item .contact-actions-content {
+  min-width: 0;
+  width: auto;
+  max-width: 100%;
+}
+
+.contact .info-item .contact-actions-content h3 {
+  margin-bottom: 14px;
+}
+
+.contact .info-item.contact-action-card {
+  width: 100%;
+  background: #f4f4f4;
+  justify-content: center;
+}
+
+.contact .info-item .contact-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  column-gap: 18px;
+  row-gap: 14px;
+}
+
+@media (max-width: 575px) {
+  .contact .info-item.contact-action-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact .info-item.contact-action-card > .icon {
+    margin: 0 0 12px;
+  }
+
+  .contact .info-item .contact-actions {
+    justify-content: center;
+  }
+}
+
 .contact .info-item p {
   padding: 0;
   margin: 0;
   line-height: 24px;
   font-size: 14px;
+}
+
+.contact .info-item .opening-hours {
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 .contact .info-item .social-links a {
@@ -1389,18 +1506,18 @@ section {
   color: var(--color-primary);
 }
 
-.contact .php-email-form {
+.contact .contact-form {
   width: 100%;
   margin-top: 30px;
   background: #fff;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
 }
 
-.contact .php-email-form .form-group {
+.contact .contact-form .form-group {
   padding-bottom: 20px;
 }
 
-.contact .php-email-form .error-message {
+.contact .contact-form .error-message {
   display: none;
   color: #fff;
   background: #df1529;
@@ -1409,11 +1526,11 @@ section {
   font-weight: 600;
 }
 
-.contact .php-email-form .error-message br+br {
+.contact .contact-form .error-message br+br {
   margin-top: 25px;
 }
 
-.contact .php-email-form .sent-message {
+.contact .contact-form .sent-message {
   display: none;
   color: #fff;
   background: #059652;
@@ -1422,14 +1539,14 @@ section {
   font-weight: 600;
 }
 
-.contact .php-email-form .loading {
+.contact .contact-form .loading {
   display: none;
   background: #fff;
   text-align: center;
   padding: 15px;
 }
 
-.contact .php-email-form .loading:before {
+.contact .contact-form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -1441,27 +1558,27 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 
-.contact .php-email-form input,
-.contact .php-email-form textarea {
+.contact .contact-form input,
+.contact .contact-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-.contact .php-email-form input:focus,
-.contact .php-email-form textarea:focus {
+.contact .contact-form input:focus,
+.contact .contact-form textarea:focus {
   border-color: var(--color-primary);
 }
 
-.contact .php-email-form input {
+.contact .contact-form input {
   height: 48px;
 }
 
-.contact .php-email-form textarea {
+.contact .contact-form textarea {
   padding: 10px 12px;
 }
 
-.contact .php-email-form button[type=submit] {
+.contact .contact-form button[type=submit] {
   background: var(--color-primary);
   border: 0;
   padding: 12px 40px;
@@ -1470,7 +1587,7 @@ section {
   border-radius: 50px;
 }
 
-.contact .php-email-form button[type=submit]:hover {
+.contact .contact-form button[type=submit]:hover {
   background: #ec2727;
 }
 
@@ -1654,4 +1771,146 @@ section {
 
 .footer .credits a {
   color: #fff;
+}
+
+/* Responsive layout refinements */
+html {
+  scroll-padding-top: 90px;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+section {
+  padding-block: clamp(48px, 6vw, 80px);
+}
+
+.hero h2 {
+  font-size: clamp(36px, 5vw, 72px);
+  overflow-wrap: break-word;
+}
+
+.hero .row > div {
+  min-width: 0;
+}
+
+.hero .row .d-flex {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero .btn-watch-video {
+  margin-left: 0;
+}
+
+.section-header p {
+  font-size: clamp(32px, 4vw, 48px);
+  overflow-wrap: break-word;
+}
+
+.about .about-img {
+  min-height: clamp(280px, 40vw, 500px);
+}
+
+.book-a-table .reservation-img {
+  min-height: clamp(240px, 40vw, 500px);
+}
+
+.book-a-table .booking-form,
+.book-a-table .reservation-form-bg {
+  min-width: 0;
+  width: 100%;
+}
+
+.book-a-table .booking-form textarea {
+  max-width: 100%;
+  resize: vertical;
+}
+
+.book-a-table .booking-form button[type=submit] {
+  max-width: 100%;
+  padding-inline: clamp(24px, 5vw, 60px);
+}
+
+.contact .info-item > div {
+  min-width: 0;
+}
+
+.contact .info-item .opening-hours {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.footer p,
+.footer .copyright {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 575px) {
+  .header {
+    height: 70px;
+    min-height: 70px;
+  }
+
+  .header .container {
+    flex-wrap: nowrap;
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .header .logo {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .header .logo h1 {
+    font-size: clamp(16px, 5vw, 22px);
+    line-height: 1;
+  }
+
+  .header .btn-book-a-table {
+    flex-shrink: 0;
+    margin-left: 8px;
+    padding: 7px 9px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .header .mobile-nav-show {
+    flex-shrink: 0;
+    margin: 0 0 0 8px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 110px;
+  }
+
+  .menu .nav-tabs {
+    row-gap: 8px;
+  }
+
+  .menu .nav-link {
+    margin-inline: 5px;
+  }
+
+  .events .event-item {
+    min-height: 420px;
+    padding: 24px;
+  }
+
+  .book-a-table .booking-form {
+    padding: 18px;
+  }
+
+  .contact .info-item {
+    padding: 22px;
+  }
+
+  .contact .info-item.contact-action-card {
+    padding: 22px 16px;
+  }
 }
